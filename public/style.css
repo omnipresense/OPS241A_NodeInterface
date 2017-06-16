@@ -1,0 +1,302 @@
+body {
+    background: -webkit-linear-gradient(navy, lightskyblue 80%) fixed; /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(navy, lightskyblue 80%) fixed; /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(navy, lightskyblue 80%) fixed; /* For Firefox 3.6 to 15 */
+    background: linear-gradient(navy, lightskyblue 80%) fixed; /* Standard syntax (must be last) */
+}
+.btn-custom {
+  background-color: #48d;
+  border-color: #48d;
+  color: white;
+}
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active,
+.btn-custom.active  {
+  background-color: #d84;
+  border-color: #d84;
+}
+.btn-custom.disabled:hover,
+.btn-custom.disabled:focus,
+.btn-custom.disabled:active,
+.btn-custom.disabled.active,
+.btn-custom[disabled]:hover,
+.btn-custom[disabled]:focus,
+.btn-custom[disabled]:active,
+.btn-custom[disabled].active,
+fieldset[disabled] .btn-custom:hover,
+fieldset[disabled] .btn-custom:focus,
+fieldset[disabled] .btn-custom:active,
+fieldset[disabled] .btn-custom.active {
+  background-color: #48d;
+  border-color: #48d;
+}
+h1 {
+    position:absolute;
+    top:0px;
+    left: 600px;
+    text-align: center;
+    color: white;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 36px;
+}
+h2 {
+    position:absolute;
+    top:200px;
+    left: 50px;
+    text-align: center;
+    color: white;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 24px;
+}
+h3 {
+    position:absolute;
+    top:300px;
+    left: 50px;
+    text-align: center;
+    color: white;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 24px;
+}
+.thin{
+  position:absolute;
+  width: 40px;
+  height: 15px;
+  background-color:#fff;
+  transform-origin:0px 0px;
+  transform:rotate(90deg);
+  top:0px;
+  left: 250px;
+  border-radius:0% 0% 0% 0%;
+  }
+#thin1{
+  transform-origin:0px 0px;
+  transform:rotate(90deg);
+  top:0px;
+  left: 250px;
+}
+#thin2{
+  transform-origin:0px 0px;
+  transform:rotate(0deg);
+  top: 250px;
+  left: 0px;
+}
+#thin3{
+  transform-origin:0px 0px;
+  transform:rotate(0deg);
+  top: 250px;
+  left: 460px;
+}
+#thin4{
+  transform-origin:0px 0px;
+  -webkit-transform: rotate(135deg);
+  top: 387px;
+  left: 92px;
+}
+#thin5{
+  transform-origin:0px 0px;
+  -webkit-transform: rotate(45deg);
+  top: 69px;
+  left: 79px;
+}
+#thin6{
+  transform-origin:0px 0px;
+  -webkit-transform: rotate(135deg);
+  top: 80px;
+  left: 435px;
+}
+#thin7{
+  transform-origin:0px 0px;
+  -webkit-transform: rotate(45deg);
+  top: 387px;
+  left: 410px;
+}
+.thinner{
+  position:absolute;
+  width: 20px;
+  height: 5px;
+  background-color:#fff;
+  border-radius:0% 0% 0% 0%;
+}
+#thinner1{
+  transform-origin:0px 0px;
+  -webkit-transform: rotate(160deg);
+  top: 336px;
+  left: 36px;
+}
+#thinner2{
+  transform-origin:0px 0px;
+  -webkit-transform: rotate(18deg);
+  top: 155px;
+  left: 20px;
+}
+#thinner3{
+  transform-origin:0px 0px;
+  -webkit-transform: rotate(60deg);
+  top: 23px;
+  left: 143px;
+}
+#thinner4{
+  transform-origin:0px 0px;
+  -webkit-transform: rotate(120deg);
+  top: 23px;
+  left: 351px;
+}
+#thinner5{
+  transform-origin:0px 0px;
+  -webkit-transform: rotate(160deg);
+  top: 157px;
+  left: 482px;
+}
+#thinner6{
+  transform-origin:0px 0px;
+  -webkit-transform: rotate(200deg);
+  top: 338px;
+  left: 484px;
+}
+.circle{
+
+}
+#circle1 {
+  position:absolute;
+  top: 75px;
+  left: 250px;
+	width: 500px;
+	height: 500px;
+/*	background: black; <-- original code */
+  background: black; /* For browsers that do not support gradients */
+  background: -webkit-radial-gradient(circle, black 50%, dimgrey); /* Safari */
+  background: -o-radial-gradient(circle, black 50%, dimgrey); /* Opera 11.6 to 12.0 */
+  background: -moz-radial-gradient(circle, black 50%, dimgrey); /* Firefox 3.6 to 15 */
+  background: radial-gradient(circle, black 50%, dimgrey); /* Standard syntax */
+	-moz-border-radius: 250px;
+	-webkit-border-radius: 250px;
+	border-radius: 250px;
+}
+#circle2{
+  position:absolute;
+  top: 75px;
+  left: 250px;
+  width: 510px;
+  height: 510px;
+/*	background: black; <-- original code */
+  background: white; /* For browsers that do not support gradients */
+  background: -webkit-radial-gradient(circle, black 50%, dimgrey); /* Safari */
+  background: -o-radial-gradient(circle, black 50%, dimgrey); /* Opera 11.6 to 12.0 */
+  background: -moz-radial-gradient(circle, black 50%, dimgrey); /* Firefox 3.6 to 15 */
+  background: radial-gradient(circle, black 50%, dimgrey); /* Standard syntax */
+  -moz-border-radius: 260px;
+  -webkit-border-radius: 260px;
+  border-radius: 260px;
+}
+#inbound {
+  position:absolute;
+  top:200px;
+  left:458px;
+  width:41px;
+  height:43px;
+}
+#outbound {
+  position:absolute;
+  top:200px;
+  left:500px;
+  width:41px;
+  height:43px;
+}
+#velocity {
+  position: absolute;
+  top: 180px;
+  left: 160px;
+  width: 150px;
+  color: #fff;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 128px;
+  z-index: 10;
+  text-align: right;
+}
+#unit {
+  position:absolute;
+  top: 312px;
+  left: 232px;
+  color: #fff;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 24px;
+  z-index: 0;
+}
+.speed1 {
+  position:absolute;
+  top: 355px;
+  left: 95px;
+  color: blue;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 36px;
+  z-index: 10;
+}
+.speed {
+  color: blue;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 36px;
+  z-index: 10;
+}
+#speed1 {
+  position:absolute;
+  top: 360px;
+  left: 95px;
+}
+#speed2 {
+  position:absolute;
+  top: 235px;
+  left: 45px;
+}
+#speed3 {
+  position:absolute;
+  top: 100px;
+  left: 95px;
+ }
+#speed4 {
+  position:absolute;
+  top: 40px;
+  left: 220px;
+ }
+ #speed5 {
+  position:absolute;
+  top: 105px;
+  left: 365px;
+ }
+#speed6 {
+  position:absolute;
+  top: 235px;
+  left: 410px;
+ }
+#speed7 {
+  position:absolute;
+  top: 355px;
+  left: 365px;
+ }
+
+.square {
+  position:absolute;
+  top: 320px;
+  left: 220px;
+	width: 40px;
+	height: 40px;
+	background: white;
+}
+.speed8 {
+  position:absolute;
+  top: 337px;
+  left: 270px;
+  color: blue;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 24px;
+  z-index: 10;
+}
+.speedmax {
+  position:absolute;
+  top: 328px;
+  left: 224px;
+  color: orange;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 32px;
+  z-index: 10;
+}

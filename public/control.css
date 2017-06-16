@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+body
+{
+    background: -webkit-linear-gradient(teal, limegreen 80%) fixed; /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(teal, limegreen 80%) fixed; /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(teal, limegreen 80%) fixed; /* For Firefox 3.6 to 15 */
+    background: linear-gradient(teal, limegreen 80%) fixed; /* Standard syntax (must be last) */
+}
+
+p,h1,h2,h3,li,td,div
+{ 
+font-family: helvetica, sans-serif;
+color:#000000;
+}
+
+
+.hidden
+{
+display:none;
+}
