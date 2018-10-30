@@ -160,28 +160,29 @@ function initSocketIO(httpServer, debug) {
 
 // Listen to serial port
 function serialListener(port, debug) {
-	var receivedData = "";
+	Readline = SerialPort.parsers.Readline
 	serialPort = new SerialPort(port, {
-		baudrate: 9600,
-		// our defaults for serial communication.  Maybe 115200 is better?
+		baudRate: 9600,
 		dataBits: 8,
 		parity: 'none',
 		stopBits: 1,
 		flowControl: false,
-		parser: SerialPort.parsers.readline('\n')
+	})
+	parser = new Readline(({ delimiter: '\r\n' }))
+	serialPort.pipe(parser)
+
+	parser.on("open", function() {
+		console.log('open serial communication');
 	});
 
-	serialPort.on("open", function() {
-		console.log('open serial communication');
-		// Listens to incoming data
-		serialPort.on('data', function(data) {
-			console.log("Received data:" + data);
-			// send the incoming data to browser with websockets.
-			// to quash JSON: if (data[0] != '{') {}
-			sendData = data;
-			socketServer.emit('updateData', sendData);
-			// }
-		});
+	// Listens to incoming data
+	parser.on('data', function(data) {
+		console.log("Received data:" + data);
+		// send the incoming data to browser with websockets.
+		// to quash JSON: if (data[0] != '{') {}
+		sendData = data;
+		socketServer.emit('updateData', sendData);
+		// }
 	});
 }
 
