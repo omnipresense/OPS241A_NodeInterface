@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+
+body
+{
+background-color:#ffffff;
+max-width:1000px;
+}
+p
+{
+max-width:1000px;
+}
+
+p,h1,h2,h3,li,td,div,table,canvas
+{ 
+font-family: helvetica, sans-serif;
+color:#000000;
+text-align:center;
+margin-left: auto;
+margin-right: auto;
+}
+
+p,li,td,div
+{ 
+font-size: small; 
+}
+
+h4
+{
+text-align:left;
+margin-left:0;
+}
+
+#currentBox
+{
+font-size: x-large; 	
+}
+#magnitudesBox
+{
+font-size: large; 	
+}
+#maximumBox,#minimumBox 
+{
+font-size: medium; 	
+}
+
+
+.hidden
+{
+display:none;
+}

@@ -33,6 +33,7 @@ function launch(port, debug) {
 	handle["/"] = requestHandlers.sendInterface;
 	handle["/interface"] = requestHandlers.sendInterface;
 	handle["/graph"] = requestHandlers.sendGraph;
+	handle["/graph2"] = requestHandlers.sendGraph2;
 	handle["/control"] = requestHandlers.sendControl;
 
 	server.start(router.route,handle,port, debug);
