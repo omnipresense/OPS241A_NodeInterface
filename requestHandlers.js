@@ -23,6 +23,15 @@ function sendGraph(response) {
 
 exports.sendGraph = sendGraph;
 
+function sendGraph2(response) {
+  console.log("Request handler 'graph2' was called.");
+  response.writeHead(200, {"Content-Type": "text/html"});
+  var html = fs.readFileSync(__dirname + "/public/graph2.html")
+  response.end(html);
+}
+
+exports.sendGraph2 = sendGraph2;
+
 function sendControl(response) {
   console.log("Request handler 'control' was called.");
   response.writeHead(200, {"Content-Type": "text/html"});
