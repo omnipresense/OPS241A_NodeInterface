@@ -19,8 +19,8 @@ There are currently 4 pages:
 
 [Speedometer](http://localhost:8080/interface)
 
-[Control Daskboard](http://localhost:8080/control)
+[Control Dashboard](http://localhost:8080/control)
 
 [Scrolling Line Graph](http://localhost:8080/graph)
 
-[Multi-Object view](http://localhost:8080/graph2)
+[Multi-Object View](http://localhost:8080/graph2)
