@@ -9,10 +9,8 @@
     <!-- Bootstrap -->
     <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 
-
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Nova+Mono" rel="stylesheet"> 
-  
 
     <script src="jquery-3.2.1.min.js"></script>
     <script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
@@ -39,6 +37,7 @@ function initSocketIO() {
   iosocket = io.connect();
   iosocket.on('onconnection', function(value) {
     sensorValue = value; // receive start  value from server
+    iosocket.emit('Reset', "");
     initVelocity();
     iosocket.emit('Debug', "Y");
 
@@ -165,9 +164,9 @@ $(document).ready(function() {
 </script>
 
 <body>
-  <h1> OPS241-A Development System </h1>
-  <h2>Board Test</h2>
-  <h3>Simulation</h3>
+  <h1> OPS24X Development System </h1>
+<!--  <h2>Board Test</h2>
+  <h3>Simulation</h3> -->
 <div id="circle1">
   <div>
     <div class="thin" id="thin1"></div>
@@ -200,8 +199,8 @@ $(document).ready(function() {
   <div class="speedmax">24</div> -->
 </div>
 <img src="logo_white_color_trans.png" style='position:absolute; top:0; left:0;' style="width:375px;height:100px;">
-<img src="start_button.png" id="start" onclick="change_image('0');" border="0" alt="Start" style="position:absolute; top:250px; left:20px"/>
-<img src="start_button.png" id="simulate" onclick="change_image('1');" border="0" alt="Submit" style="position:absolute;top:350px; left:20px"/>
+<!-- <img src="start_button.png" id="start" onclick="change_image('0');" border="0" alt="Start" style="position:absolute; top:250px; left:20px"/> -->
+<!-- <img src="start_button.png" id="simulate" onclick="change_image('1');" border="0" alt="Submit" style="position:absolute;top:350px; left:20px"/> -->
 <img id="inbound" src="inbound_white.png" >
 <img id="outbound" src="outbound_white.png" >
 

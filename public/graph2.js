@@ -15,6 +15,7 @@ function initSocketIO() {
   iosocket = io.connect();
   iosocket.on('onconnection', function(value) {
     sensorValue = value; // receive start  value from server
+    iosocket.emit('Reset', "");
     initVelocity();
 
     // receive new values from server

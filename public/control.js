@@ -7,6 +7,7 @@ function initSocketIO() {
   iosocket = io.connect();
   iosocket.on('onconnection', function(value) {
     sensorValue = value; // receive start  value from server
+    iosocket.emit('Reset', "");
     initVelocity();
     iosocket.emit('Query', 'B');
 
