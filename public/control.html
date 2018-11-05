@@ -7,12 +7,8 @@
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <!-- Bootstrap -->
   <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-
-
   <link rel="stylesheet" type="text/css" href="tester.css">
   <link href="https://fonts.googleapis.com/css?family=Nova+Mono" rel="stylesheet"> 
-  
-
   <script src="jquery-3.2.1.min.js"></script>
   <script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
   <link rel="stylesheet" type="text/css" href="jquery-ui-1.12.1/jquery-ui.min.css">
@@ -20,89 +16,77 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
   <script src="control.js"></script>
-
   <body>
     <div class="container-fluid">
-
       <div class="text-center">
         <h1>OPS24X Control Dashboard</h1>
       </div>
-
       <button data-toggle="collapse" data-target="#traffic">Click to expand to peek at live data from the module</button>
-
       <div id="traffic" class="collapse">
         <div class="alert alert-info">
-         Latest Velocity:<span id="velocity">tbd</span>
-       </div>
-       <div class="alert alert-info alert-sm">
-         Latest JSON:
-         <table id="jsondisplay"><tr colspan="2"><td id="jsonraw">tbd</td></tr></table>
-       </div>
-     </div>
-
-
-     <div class="panel with-nav-tabs panel-success">
-      <div class="panel-heading">
-
-        <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-          <li><a data-toggle="tab" href="#menuP">Power Menu</a></li>
-          <li><a data-toggle="tab" href="#menuS">Settings Menu</a></li>
-          <li><a data-toggle="tab" href="#menuD">Debug/hacking Menu</a></li>
-        </ul>
+          Latest Velocity:<span id="velocity">tbd</span>
+        </div>
+        <div class="alert alert-info alert-sm">
+          Latest JSON:
+          <table id="jsondisplay"><tr colspan="2"><td id="jsonraw">tbd</td></tr></table>
+        </div>
       </div>
-      <div class="panel-body">
-
-
-        <div class="tab-content">
-          <div id="home" class="tab-pane fade in active">
-            <h3>HOME</h3>
-            <div class="panel">
-              <p>Use the tabs above to reach panels that control the OPS24X sensor.</p>
-              <p>Above the tabs, you will see an area where the most recent speed and most recent JSON reply are available.</p>
-
-              <p>On each tab, you will see buttons that will issue calls to the web server which then passes them to the module.  The replies are passed back to the browser and these pages (or your web app) can process the results.  Even if the page does no specific result handling, you can see the results by peeking at the JSON above.  You can try this by pressing this button:
-              <h2>Version</h2> <span><button type="button" id="version_qry_btn" class="btn btn-custom">Current Version?</button></span> <span id="VersionOut">tbd</span>
-
-            </div>
-          </div>
-          <div id="menuP" class="tab-pane fade">
-            <h3>Power Menu</h3>
-
-            <div id="Power"> <h2>Power</h2> <span><button type="button" id="power_qry_btn" class="btn btn-custom">Current setting?</button></span> <span id="PowerModeOut">tbd</span>
-              <div class="btn-toolbar" role="toolbar" aria-label="...">
-                <div class="btn-group" role="group" aria-label="..." >
-                  <button type="button" id="power_active_btn"  class="btn btn-custom">Active (includes wait)</button>
-                  <button type="button" id="power_idle_btn"  class="btn btn-custom">Inactive</button>
-                  <button type="button" id="power_pulse_btn" class="btn btn-custom">Pulse</button>
-                </div>
-              </div>
-              <p> </p><p>Power Setting--prefer these to the 'power reduction' calls below
-              <div class="btn-toolbar" role="toolbar" aria-label="...">
-                <div class="btn-group" role="group" aria-label="..." >
-                  <button type="button" id="power_max_btn"  class="btn btn-custom">MAX power</button>
-                  <button type="button" id="power_mid_btn"  class="btn btn-custom">Mid power</button>
-                  <button type="button" id="power_min_btn"  class="btn btn-custom">min power</button>
-                </div>
-              </div>
-              <p> </p><p>Power Reduction (Power Settings above are preferred) 
-              <div class="btn-toolbar" role="toolbar" aria-label="...">
-                <div class="btn-group" role="group" aria-label="..." >
-                  <button type="button" id="power_0_btn"  class="btn btn-custom">(0)</button>
-                  <button type="button" id="power_1_btn"  class="btn btn-custom">(1)</button>
-                  <button type="button" id="power_2_btn"  class="btn btn-custom">(2)</button>
-                  <button type="button" id="power_3_btn"  class="btn btn-custom">(3)</button>
-                  <button type="button" id="power_4_btn"  class="btn btn-custom">(4)</button>
-                  <button type="button" id="power_5_btn"  class="btn btn-custom">(5)</button>
-                  <button type="button" id="power_6_btn"  class="btn btn-custom">(6)</button>
-                  <button type="button" id="power_7_btn"  class="btn btn-custom">(7)</button>
-                </div>
+      <div class="panel with-nav-tabs panel-success">
+        <div class="panel-heading">
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+            <li><a data-toggle="tab" href="#menuP">Power Menu</a></li>
+            <li><a data-toggle="tab" href="#menuF">Filtering Menu</a></li>
+            <li><a data-toggle="tab" href="#menuS">Settings Menu</a></li>
+            <li><a data-toggle="tab" href="#menuD">Debug/hacking Menu</a></li>
+          </ul>
+        </div>
+        <div class="panel-body">
+          <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+              <h3>HOME</h3>
+              <div class="panel">
+                <p>Use the tabs above to reach panels that control the OPS24X sensor.</p>
+                <p>Above the tabs, you will see an area where the most recent speed and most recent JSON reply are available.</p>
+                <p>On each tab, you will see buttons that will issue calls to the web server which then passes them to the module.  The replies are passed back to the browser and these pages (or your web app) can process the results.  Even if the page does no specific result handling, you can see the results by peeking at the JSON above.  You can try this by pressing this button:
+                <h2>Version</h2> <span><button type="button" id="version_qry_btn" class="btn btn-custom">Current Version?</button></span> <span id="VersionOut">tbd</span>
               </div>
             </div>
-
-            <div><h2>Idle/Wait between pings</h2>
-              <span><button type="button" id="idlewait_qry_btn" class="btn btn-custom">Current value?</button></span> <span id="IdleWaitOut">tbd</span>
-              <p>Wait time displayed in ms.  If >1000ms, radio powers down between pings.
+            <div id="menuP" class="tab-pane fade">
+              <h3>Power Menu</h3>
+              <div id="Power"> <h2>Power</h2> <span><button type="button" id="power_qry_btn" class="btn btn-custom">Current setting?</button></span> <span id="PowerModeOut">tbd</span>
+                <div class="btn-toolbar" role="toolbar" aria-label="...">
+                  <div class="btn-group" role="group" aria-label="..." >
+                    <button type="button" id="power_active_btn"  class="btn btn-custom">Active (includes wait)</button>
+                    <button type="button" id="power_idle_btn"  class="btn btn-custom">Inactive</button>
+                    <button type="button" id="power_pulse_btn" class="btn btn-custom">Pulse</button>
+                  </div>
+                </div>
+                <p> </p><p>Power Setting (preferred over the 'Power Reduction' below)
+                <div class="btn-toolbar" role="toolbar" aria-label="...">
+                  <div class="btn-group" role="group" aria-label="..." >
+                    <button type="button" id="power_max_btn"  class="btn btn-custom">MAX power</button>
+                    <button type="button" id="power_mid_btn"  class="btn btn-custom">Mid power</button>
+                    <button type="button" id="power_min_btn"  class="btn btn-custom">min power</button>
+                  </div>
+                </div>
+                <p> </p><p>Power Reduction ('Power Setting' above is preferred) 
+                <div class="btn-toolbar" role="toolbar" aria-label="...">
+                  <div class="btn-group" role="group" aria-label="..." >
+                    <button type="button" id="power_0_btn"  class="btn btn-custom">(0)</button>
+                    <button type="button" id="power_1_btn"  class="btn btn-custom">(1)</button>
+                    <button type="button" id="power_2_btn"  class="btn btn-custom">(2)</button>
+                    <button type="button" id="power_3_btn"  class="btn btn-custom">(3)</button>
+                    <button type="button" id="power_4_btn"  class="btn btn-custom">(4)</button>
+                    <button type="button" id="power_5_btn"  class="btn btn-custom">(5)</button>
+                    <button type="button" id="power_6_btn"  class="btn btn-custom">(6)</button>
+                    <button type="button" id="power_7_btn"  class="btn btn-custom">(7)</button>
+                  </div>
+                </div>
+              </div>
+              <div><h2>Idle/Wait between pings</h2>
+                <span><button type="button" id="idlewait_qry_btn" class="btn btn-custom">Current value?</button></span> <span id="IdleWaitOut">tbd</span>
+                <p>Wait Time displayed in ms.  If >1000ms, radio powers down between pings.
                 <div class="btn-group" role="group" aria-label="..." >
                   <button type="button" id="idlewait_0_btn"  class="btn btn-custom">(no wait)</button>
                   <button type="button" id="idlewait_I_btn"  class="btn btn-custom">1</button>
@@ -115,50 +99,88 @@
                   <button type="button" id="idlewait_M_btn"  class="btn btn-custom">1000</button>
                 </div>
                 <p>
-                  You can also enter a number (in sec) and press Send.  <input type="text" id="idlewait_entry"/><button type="button" id="idlewait_send_btn">Send</button>
+                  Or enter a Wait Time (in sec) and press Send: <input type="text" id="idlewait_entry"/><button type="button" id="idlewait_send_btn">Send</button>
                 </p>
               </div>
-
+            </div>
+            <div id="menuF" class="tab-pane fade">
+              <h3>Filtering Menu</h3>
+              <div><h2>Speed Filter</h2> <span><button type="button" id="speed_filter_qry_btn" class="btn btn-custom">Current Speed Filter?</button></span> <span id="SpeedFilterOut">tbd</span></div>
+              <p>Enter a Minimum or Maximum Speed and press Send.</p>
+              <div class="btn-toolbar" role="toolbar" aria-label="...">
+                <div class="btn-group" role="group" aria-label="..." >
+                  <p>Minimum Speed: <input type="text" id="min_speed_filter_entry"/><button type="button" id="min_speed_filter_send_btn">Send</button></p>
+                </div>
+              </div>
+              <div class="btn-toolbar" role="toolbar" aria-label="...">
+                <div class="btn-group" role="group" aria-label="..." >
+                  <p>Maximum Speed: <input type="text" id="max_speed_filter_entry"/><button type="button" id="max_speed_filter_send_btn">Send</button></p>
+                </div>
+              </div>
+              <div> <h2>Magnitude Filter (Squelch)</h2> <span><button type="button" id="squelch_qry_btn" class="btn btn-custom">Current Magnitude Filter (Squelch)?</button></span> <span id="SquelchOut">tbd</span></div>
+              <p>Enter a Minimum or Maximum Magnitude and press Send.</p>
+              <div class="btn-toolbar" role="toolbar" aria-label="...">
+                <div class="btn-group" role="group" aria-label="..." >
+                  <p>Minimum Magnitude: <input type="text" id="min_squelch_entry"/><button type="button" id="min_squelch_send_btn">Send</button></p>
+                </div>
+              </div>
+              <div class="btn-toolbar" role="toolbar" aria-label="...">
+                <div class="btn-group" role="group" aria-label="..." >
+                  <p>Maximum Magnitude: <input type="text" id="max_squelch_entry"/><button type="button" id="max_squelch_send_btn">Send</button></p>
+                </div>
+              </div>
+              <div> <h2>Direction Filter</h2> <span><button type="button" id="direction_filter_qry_btn" class="btn btn-custom">Current Direction Filter?</button></span> <span id="DirectionFilterOut">tbd</span></div>
+              <div class="btn-toolbar" role="toolbar" aria-label="...">
+                <div class="btn-group" role="group" aria-label="..." >
+                  <button type="button" id="direction_towards_btn"  class="btn btn-custom">toward only</button>
+                  <button type="button" id="direction_away_btn"  class="btn btn-custom">away only</button>
+                  <button type="button" id="direction_both_btn"  class="btn btn-custom">either</button>
+                </div>
+              </div>
             </div>
             <div id="menuS" class="tab-pane fade">
               <h3>Settings Menu</h3>
-
-              <h2>Sampling Rate</h2> <span><button type="button" id="sample_qry_btn" class="btn btn-custom">Current sampling rate?</button></span> <span id="SamplingRateOut">tbd</span>
-              <p>Sampling Rate </p>
-              <div class="btn-group" role="group" aria-label="..." >
-                <button type="button" id="sample_I_btn"  class="btn btn-custom">1000 Hz</button>
-                <button type="button" id="sample_V_btn"  class="btn btn-custom">5000 Hz</button>
-                <button type="button" id="sample_X_btn"  class="btn btn-custom">10 kHz</button>
-                <button type="button" id="sample_2_btn"  class="btn btn-custom">20 kHz</button>
-                <button type="button" id="sample_L_btn"  class="btn btn-custom">50 kHz</button>
-                <button type="button" id="sample_C_btn"  class="btn btn-custom">100 kHz</button>
-              </div>
-
-              <div> <h2>Units</h2> <span><button type="button" id="units_qry_btn" class="btn btn-custom">Current setting?</button></span> <span id="UnitsOut">tbd</span></div>
+              <div><h2>Sampling Rate</h2> <span><button type="button" id="sample_qry_btn" class="btn btn-custom">Current Sampling Rate?</button></span> <span id="SamplingRateOut">tbd</span></div>
               <div class="btn-toolbar" role="toolbar" aria-label="...">
                 <div class="btn-group" role="group" aria-label="..." >
-                  <button type="button" id="ms_btn"  class="btn btn-custom">m/s</button>
-                  <button type="button" id="cs_btn"  class="btn btn-custom">cm/s</button>
-                  <button type="button" id="fts_btn" class="btn btn-custom">ft/s</button>
-                </div>
-                <div class="btn-group" role="group" aria-label="..." >
-                  <button type="button" id="kmh_btn" class="btn btn-custom">km/h</button>
-                  <button type="button" id="us_btn"  class="btn btn-custom">mph</button>
+                  <button type="button" id="sample_I_btn"  class="btn btn-custom">1000 Hz</button>
+                  <button type="button" id="sample_V_btn"  class="btn btn-custom">5000 Hz</button>
+                  <button type="button" id="sample_X_btn"  class="btn btn-custom">10 kHz</button>
+                  <button type="button" id="sample_2_btn"  class="btn btn-custom">20 kHz</button>
+                  <button type="button" id="sample_L_btn"  class="btn btn-custom">50 kHz</button>
+                  <button type="button" id="sample_C_btn"  class="btn btn-custom">100 kHz</button>
                 </div>
               </div>
-
+              <div> <h2>Units</h2> <span><button type="button" id="units_qry_btn" class="btn btn-custom">Current Units?</button></span> <span id="UnitsOut">tbd</span></div>
+              <div class="btn-toolbar" role="toolbar" aria-label="...">
+                <div class="btn-group" role="group" aria-label="..." >
+                  <button type="button" id="mps_btn"  class="btn btn-custom">m/s</button>
+                  <button type="button" id="cmps_btn"  class="btn btn-custom">cm/s</button>
+                  <button type="button" id="ftps_btn"  class="btn btn-custom">ft/s</button>
+                </div>
+                <div class="btn-group" role="group" aria-label="..." >
+                  <button type="button" id="kmph_btn"  class="btn btn-custom">km/h</button>
+                  <button type="button" id="mph_btn"  class="btn btn-custom">mph</button>
+                </div>
+              </div>
+              <div> <h2>Fractional Digits</h2> <span><button type="button" id="format_qry_btn" class="btn btn-custom">Current Number of Fractional Digits?</button></span> <span id="FormatOut">tbd</span></div>
+              <div class="btn-toolbar" role="toolbar" aria-label="...">
+                <div class="btn-group" role="group" aria-label="..." >
+                  <button type="button" id="fmt0_btn"  class="btn btn-custom">0</button>
+                  <button type="button" id="fmt1_btn"  class="btn btn-custom">1</button>
+                  <button type="button" id="fmt2_btn"  class="btn btn-custom">2</button>
+                  <button type="button" id="fmt3_btn"  class="btn btn-custom">3</button>
+                </div>
+              </div>
               <div> <h2>Clock</h2> <span><button type="button" id="clock_qry_btn" class="btn btn-custom">Current Clock value?</button></span> <span id="ClockOut">tbd</span></div>
               <p>The clock is seconds since boot, but if it is set (to, say, unix time, or seconds-since-epoch), then it keeps the time you set.<br>
                 <button type="button" id="clock_fill_with_unixt_btn">Fill with unix time</button><input type="text" id="clock_entry"/>
                 <button type="button" id="clock_send_btn">Send</button>
               </p>
-
             </div>
             <div id="menuD" class="tab-pane fade">
               <h3>Debug/hacking Menu</h3>
-
               <div> <h2> Shiny LEDs </h2>
-
                 <div>
                   <table>
                     <tr><td width="25">LED</td><td width="100">Click to turn off</td><td width="100">Click to turn on</td></tr>
@@ -167,23 +189,19 @@
                     <tr><td style="background:red">Red</td><td id="Dr" style="background:black">off</td><td id="DR" style="background:red">ON</td></tr>
                   </table>
                 </div>
-
                 <div>
-                 <table>
-                  <tr><td>RED:</td><td>off</td><td>ON</td><td>off</td><td>ON</td></tr>
-                  <tr><td>Green:off</td><td id="rgb" style="background:#000">&nbsp;</td><td id="Rgb" style="background:#f00">&nbsp;</td><td id="rgB" style="background:#00f">&nbsp;</td><td id="RgB" style="background:#f0f">&nbsp;</td></tr>
-                  <tr><td>Green:ON</td><td id="rGb" style="background:#0f0">&nbsp;</td><td id="RGb" style="background:#ff0">&nbsp;</td><td id="rGB" style="background:#0ff">&nbsp;</td><td id="RGB" style="background:#fff">&nbsp;</td></tr>
-                  <tr><td>BLUE:</td><td colspan="2" align="center">blue off</td><td colspan="2" align="center">BLUE ON</td></tr>
-                 </table>
-               </div>
-             </div><!--end panel-body-->
-           </div>
-         </div>
-       </div>
-
-
-
-     </div>
-   </body>
-   </html>
-   
+                  <table>
+                    <tr><td>RED:</td><td>off</td><td>ON</td><td>off</td><td>ON</td></tr>
+                    <tr><td>Green:off</td><td id="rgb" style="background:#000">&nbsp;</td><td id="Rgb" style="background:#f00">&nbsp;</td><td id="rgB" style="background:#00f">&nbsp;</td><td id="RgB" style="background:#f0f">&nbsp;</td></tr>
+                    <tr><td>Green:ON</td><td id="rGb" style="background:#0f0">&nbsp;</td><td id="RGb" style="background:#ff0">&nbsp;</td><td id="rGB" style="background:#0ff">&nbsp;</td><td id="RGB" style="background:#fff">&nbsp;</td></tr>
+                    <tr><td>BLUE:</td><td colspan="2" align="center">blue off</td><td colspan="2" align="center">BLUE ON</td></tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

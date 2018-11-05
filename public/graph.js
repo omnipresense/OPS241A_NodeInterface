@@ -7,9 +7,12 @@ function initSocketIO() {
   iosocket = io.connect();
   iosocket.on('onconnection', function(value) {
     sensorValue = value; // receive start  value from server
-    iosocket.emit('Reset', "");
     initVelocity();
+    iosocket.emit('OutputFeature', 'r'); // cannot be raw mode
+    iosocket.emit('OutputFeature', 'm'); // cannot have magnitude
+    iosocket.emit('OutputFeature', "1"); // one result (top) only
     iosocket.emit('Units', "C");
+    iosocket.emit('Format', "0");
 
     // receive changed values from server
     iosocket.on('updateData', function(receivedData) {

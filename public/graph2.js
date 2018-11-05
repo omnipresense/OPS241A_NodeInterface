@@ -15,7 +15,6 @@ function initSocketIO() {
   iosocket = io.connect();
   iosocket.on('onconnection', function(value) {
     sensorValue = value; // receive start  value from server
-    iosocket.emit('Reset', "");
     initVelocity();
 
     // receive new values from server
@@ -31,8 +30,9 @@ function initSocketIO() {
 function initVelocity() {
   $("#velocity").html("tbd");
   iosocket.emit('OutputFeature', 'j'); // cannot be JSON mode
+  iosocket.emit('OutputFeature', 'r'); // cannot be raw mode
   iosocket.emit('OutputFeature', 'M'); // want Magnitude (which comes first)
-  iosocket.emit('OutputFeature', (speedsToTrack).toString());  // 2 pairs, eg 4
+  iosocket.emit('OutputFeature', (speedsToTrack).toString());  // x pairs, eg 2x
   console.log("setting speedsToTrack to:"+speedsToTrack.toString());
 }
 window.onload = function() {

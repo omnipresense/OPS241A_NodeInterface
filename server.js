@@ -150,8 +150,14 @@ function initSocketIO(httpServer, debug) {
 		socket.on('SampleRate', function(data) {
 		 	serialPort.write("S"+data);
 		});
+		socket.on('SpeedFilter', function(data) {
+			serialPort.write("R"+data);
+		});
 		socket.on('Squelch', function(data) {
 		 	serialPort.write("Q"+data);
+		});
+		socket.on('DirectionFilter', function(data) {
+			serialPort.write("R"+data);
 		});
 		socket.on('Clock', function(data) {
 		 	serialPort.write("C"+data);
