@@ -46,7 +46,7 @@ function initSocketIO() {
           $("#UnitsOut").html("Units is "+data.Units);
         }
         if (data.Format != undefined) {
-          $("#FormatOut").html("Number of Fractional Digits is "+data.Format);
+          $("#FormatOut").html("Number of Floating point Digits is "+data.digits);
         }
         if (data.Clock != undefined) {
           $("#ClockOut").html("Clock is "+data.Clock);
