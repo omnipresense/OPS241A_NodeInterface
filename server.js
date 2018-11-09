@@ -9,6 +9,16 @@ var socketServer;
 var serialPort;
 var sendData = "";
 
+function hex(str, data) {
+	var arr = [];
+	for (var i = 0, len = str.length; i < len; i ++) {
+		var ascii = str.charCodeAt(i);
+		arr.push(ascii);
+	}
+	arr.push(data);
+	return new Buffer(arr);
+}
+
 function startServer(route, handle, port, debug) {
 	// on request event
 	function onRequest(request, response) {
@@ -140,8 +150,14 @@ function initSocketIO(httpServer, debug) {
 		socket.on('SampleRate', function(data) {
 		 	serialPort.write("S"+data);
 		});
+		socket.on('SpeedFilter', function(data) {
+			serialPort.write("R"+data);
+		});
 		socket.on('Squelch', function(data) {
 		 	serialPort.write("Q"+data);
+		});
+		socket.on('DirectionFilter', function(data) {
+			serialPort.write("R"+data);
 		});
 		socket.on('Clock', function(data) {
 		 	serialPort.write("C"+data);
@@ -155,21 +171,25 @@ function initSocketIO(httpServer, debug) {
 		socket.on('LEDTest', function(data) {
 		 	serialPort.write("^"+data);
 		});
+		socket.on('Reset', function(data) {
+		 	serialPort.write(hex("", 3));
+		});
 	});
 }
 
 // Listen to serial port
 function serialListener(port, debug) {
-	Readline = SerialPort.parsers.Readline
+	Readline = SerialPort.parsers.Readline;
+
 	serialPort = new SerialPort(port, {
-		baudRate: 9600,
+		baudRate: 19200,  // with USB, this is almost not used.  Arduinos care, PCs dont.
 		dataBits: 8,
 		parity: 'none',
 		stopBits: 1,
 		flowControl: false,
-	})
-	parser = new Readline(({ delimiter: '\r\n' }))
-	serialPort.pipe(parser)
+	});
+	parser = new Readline(({ delimiter: '\r\n' }));
+	serialPort.pipe(parser);
 
 	parser.on("open", function() {
 		console.log('open serial communication');
@@ -182,7 +202,6 @@ function serialListener(port, debug) {
 		// to quash JSON: if (data[0] != '{') {}
 		sendData = data;
 		socketServer.emit('updateData', sendData);
-		// }
 	});
 }
 

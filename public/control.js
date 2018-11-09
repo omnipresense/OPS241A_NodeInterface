@@ -22,29 +22,43 @@ function initSocketIO() {
         $("#velocity").html( ""+receivedData);
         //animation code tbd
       } else {
-    		$("#jsonraw").html( ""+receivedData);
-    		var data = JSON.parse(receivedData);
-    		if (data.PowerMode != undefined) {
-    			$("#PowerModeOut").html("PowerMode is "+data.PowerMode);
-    		} else if (data.IdleWaitTime != undefined) {
-    			$("#IdleWaitOut").html("IdleWaitTime is "+data.IdleWaitTime);
-    		} else if (data.SamplingRate != undefined) {
-    			$("#SamplingRateOut").html("SamplingRate is "+data.SamplingRate);
-        } else if (data.Format != undefined) {
-          $("#FormatOut").html("Digit count format is "+data.Format);
-    		} else if (data.Units != undefined) {
-    			$("#UnitsOut").html("Units setting is "+data.Units);
-        } else if (data.Clock != undefined) {
+        $("#jsonraw").html( ""+receivedData);
+        var data = JSON.parse(receivedData);
+        if (data.PowerMode != undefined) {
+          $("#PowerModeOut").html("Power is "+data.PowerMode);
+        }
+        if (data.IdleWaitTime != undefined) {
+          $("#IdleWaitOut").html("IdleWaitTime is "+data.IdleWaitTime);
+        }
+        if ((data.RequiredMinSpeed != undefined) && (data.RequiredMaxSpeed != undefined)) {
+          $("#SpeedFilterOut").html("Speed Filter is minimum:"+data.RequiredMinSpeed+" maximum:"+data.RequiredMaxSpeed);
+        }
+        if ((data.SquelchMin != undefined) && (data.SquelchMax != undefined)) {
+          $("#SquelchOut").html("Magnitude Filter is minimum:"+data.SquelchMin+" maximum:"+data.SquelchMax);
+        }
+        if (data.RequiredDirection != undefined) {
+          $("#DirectionFilterOut").html("Direction Filter is "+data.RequiredDirection);
+        }
+        if (data.SamplingRate != undefined) {
+          $("#SamplingRateOut").html("Sampling Rate is "+data.SamplingRate);
+        }
+        if (data.Units != undefined) {
+          $("#UnitsOut").html("Units is "+data.Units);
+        }
+        if (data.Format != undefined) {
+          $("#FormatOut").html("Number of Fractional Digits is "+data.Format);
+        }
+        if (data.Clock != undefined) {
           $("#ClockOut").html("Clock is "+data.Clock);
-    		} else if (data.Version != undefined) {
-    			$("#VersionOut").html("Version is "+data.Version);
-        } 
+        }
+        if (data.Version != undefined) {
+          $("#VersionOut").html("Version is "+data.Version);
+        }
         // future: else if data.Other  .. process other server results here.
       } // end else .. so it's JSON
     });
   });
 }
-
 
 function initVelocity() {
   $("#velocity").html("tbd");
@@ -53,8 +67,6 @@ function initVelocity() {
 window.onload = function() {
   initSocketIO();
 };
-
-
 
 $(document).ready(function() {
   initVelocity();
@@ -136,9 +148,50 @@ $(document).ready(function() {
     iosocket.emit('IdleWait', "M");
   });
   $('#idlewait_send_btn').click(function() {
-  	var userEntry = "=";
-  	userEntry += $('#idlewait_entry').val() + "\n";
+    var userEntry = "=";
+    userEntry += $('#idlewait_entry').val() + "\n";
     iosocket.emit('IdleWait', userEntry);
+  });
+
+  $('#speed_filter_qry_btn').click(function() {
+    iosocket.emit('SpeedFilter', "?");
+  });
+  $('#min_speed_filter_send_btn').click(function() {
+    var userEntry = ">";
+    userEntry += $('#min_speed_filter_entry').val() + "\n";
+    iosocket.emit('SpeedFilter', userEntry);
+  });
+  $('#max_speed_filter_send_btn').click(function() {
+    var userEntry = "<";
+    userEntry += $('#max_speed_filter_entry').val() + "\n";
+    iosocket.emit('SpeedFilter', userEntry);
+  });
+
+  $('#squelch_qry_btn').click(function() {
+    iosocket.emit('Squelch', "?");
+  });
+  $('#min_squelch_send_btn').click(function() {
+    var userEntry = ">";
+    userEntry += $('#min_squelch_entry').val() + "\n";
+    iosocket.emit('Squelch', userEntry);
+  });
+  $('#max_squelch_send_btn').click(function() {
+    var userEntry = "<";
+    userEntry += $('#max_squelch_entry').val() + "\n";
+    iosocket.emit('Squelch', userEntry);
+  });
+
+  $('#direction_filter_qry_btn').click(function() {
+    iosocket.emit('DirectionFilter', "?");
+  });
+  $('#direction_towards_btn').click(function() {
+    iosocket.emit('DirectionFilter', "+");
+  });
+  $('#direction_away_btn').click(function() {
+    iosocket.emit('DirectionFilter', "-");
+  });
+  $('#direction_both_btn').click(function() {
+    iosocket.emit('DirectionFilter', "|");
   });
 
   $('#sample_qry_btn').click(function() {
@@ -185,31 +238,52 @@ $(document).ready(function() {
   $('#units_qry_btn').click(function() {
     iosocket.emit('Units', "?");
   });
-  $('#ms_btn').click(function() {
+  $('#mps_btn').click(function() {
     iosocket.emit('Units', "M");
+    iosocket.emit('Format', "1");
   });
-  $('#fts_btn').click(function() {
+  $('#ftps_btn').click(function() {
     iosocket.emit('Units', "F");
+    iosocket.emit('Format', "1");
   });
-  $('#cs_btn').click(function() {
+  $('#cmps_btn').click(function() {
     iosocket.emit('Units', "C");
+    iosocket.emit('Format', "0");
   });
-  $('#us_btn').click(function() {
+  $('#mph_btn').click(function() {
     iosocket.emit('Units', "S");
+    iosocket.emit('Format', "1");
   });
-  $('#kmh_btn').click(function() {
+  $('#kmph_btn').click(function() {
     iosocket.emit('Units', "K");
+    iosocket.emit('Format', "1");
+  });
+
+  $('#format_qry_btn').click(function() {
+    iosocket.emit('Format', "?");
+  });
+  $('#fmt0_btn').click(function() {
+    iosocket.emit('Format', "0");
+  });
+  $('#fmt1_btn').click(function() {
+    iosocket.emit('Format', "1");
+  });
+  $('#fmt2_btn').click(function() {
+    iosocket.emit('Format', "2");
+  });
+  $('#fmt3_btn').click(function() {
+    iosocket.emit('Format', "3");
   });
 
   $('#clock_qry_btn').click(function() {
     iosocket.emit('Clock', "?");
   });
   $('#clock_fill_with_unixt_btn').click(function() {
-	$('#clock_entry').val(""+Math.round(Date.now()/1000));
+    $('#clock_entry').val(""+Math.round(Date.now()/1000));
   });
   $('#clock_send_btn').click(function() {
-  	var clockEntry = "=";
-  	clockEntry += $('#clock_entry').val() + "\n";
+    var clockEntry = "=";
+    clockEntry += $('#clock_entry').val() + "\n";
     iosocket.emit('Clock', clockEntry);
   });
 
