@@ -30,6 +30,8 @@ function initSocketIO() {
     			$("#IdleWaitOut").html("IdleWaitTime is "+data.IdleWaitTime);
     		} else if (data.SamplingRate != undefined) {
     			$("#SamplingRateOut").html("SamplingRate is "+data.SamplingRate);
+        } else if (data.Format != undefined) {
+          $("#FormatOut").html("Digit count format is "+data.Format);
     		} else if (data.Units != undefined) {
     			$("#UnitsOut").html("Units setting is "+data.Units);
         } else if (data.Clock != undefined) {
@@ -159,6 +161,25 @@ $(document).ready(function() {
   });
   $('#sample_C_btn').click(function() {
     iosocket.emit('SampleRate', "C");
+  });
+
+  $('#format_qry_btn').click(function() {
+    iosocket.emit('Format', "?");
+  });
+  $('#format_0_btn').click(function() {
+    iosocket.emit('Format', "0");
+  });
+  $('#format_1_btn').click(function() {
+    iosocket.emit('Format', "1");
+  });
+  $('#format_2_btn').click(function() {
+    iosocket.emit('Format', "2");
+  });
+  $('#format_3_btn').click(function() {
+    iosocket.emit('Format', "3");
+  });
+  $('#format_4_btn').click(function() {
+    iosocket.emit('Format', "4");
   });
 
   $('#units_qry_btn').click(function() {

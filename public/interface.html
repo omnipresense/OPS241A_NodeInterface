@@ -51,13 +51,16 @@ function initSocketIO() {
         receivedData = receivedData.substr(1); // but trim it too.  
 
       if (receivedData[0] != "{") {  // so long as it's not JSON, it's speed.  Show it.
-        if (receivedData < 0) {
-          $("#velocity").html( ""+Math.abs(receivedData));
+        // surprise, outbound object when format is F0 is reported as "-0"
+        $("#velocity").html( ""+Math.abs(receivedData));  // will even handle -0
+        if (receivedData > 0) {
+          $("#inbound").attr("src","inbound_green.png");
+          $("#outbound").attr("src","outbound_white.png");
+        } else if (receivedData < 0) {
           $("#inbound").attr("src","inbound_white.png");
           $("#outbound").attr("src","outbound_green.png");
-        } else {
-          $("#velocity").html( ""+receivedData);
-          $("#inbound").attr("src","inbound_green.png");
+        } else { // well, must be zero
+          $("#inbound").attr("src","inbound_white.png");
           $("#outbound").attr("src","outbound_white.png");
         }
         //animation code tbd
