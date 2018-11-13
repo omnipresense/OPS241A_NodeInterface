@@ -25,7 +25,7 @@ function initSocketIO() {
         $("#jsonraw").html( ""+receivedData);
         var data = JSON.parse(receivedData);
         if (data.PowerMode != undefined) {
-          $("#PowerModeOut").html("Power is "+data.PowerMode);
+          $("#PowerModeOut").html("Current Power Mode is "+data.PowerMode);
         }
         if (data.IdleWaitTime != undefined) {
           $("#IdleWaitOut").html("IdleWaitTime is "+data.IdleWaitTime);
